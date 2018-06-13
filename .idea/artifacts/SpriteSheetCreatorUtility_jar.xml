@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="SpriteSheetCreatorUtility:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SpriteSheetCreatorUtility_jar</output-path>
+    <root id="archive" name="SpriteSheetCreatorUtility.jar">
+      <element id="module-output" name="SpriteSheetCreatorUtility" />
+    </root>
+  </artifact>
+</component>
