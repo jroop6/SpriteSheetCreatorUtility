@@ -307,7 +307,7 @@ public class SpriteSheetCreatorUtility extends Application {
             final double progressEstimate = 1.0 - (usedWidth-largestWidth)/(referenceWidth);
             Platform.runLater(()->progressWindow.progressBar.setProgress(progressEstimate));
             maxHeight += INCREMENT;
-        } while(usedWidth>largestWidth);
+        } while(usedWidth>largestWidth /*&& maxHeight<3300*/);
 
         // Pack the frames one more time, using the known optimalHeight:
         usedWidth = packIntoHeight(optimalHeight, frames);

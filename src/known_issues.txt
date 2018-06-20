@@ -1,0 +1,5 @@
+It seems that Java does not play well with image files whose aspect ratio is very large. It will *load* such images,
+but will throw a NullPointerException if you attempt to draw the image on a GraphicsContext. In the future, I'd like to
+determine the aspect ratio limit and force this program to output a spritesheet whose ratio is acceptable to the JVM. In
+the meantime, you can prevent an image from becoming too tall by adding a condition to the do-while loop of the pack()
+method. There is a commented-out condition for convenience.
