@@ -43,6 +43,9 @@ import java.util.List;
  * @author Jonathan D. Roop
  */
 public class SpriteSheetCreatorUtility extends Application {
+    private final int MAX_HEIGHT = Integer.MAX_VALUE; // maximum allowed height of resulting sprite sheet (in pixels)
+    private final int MIN_HEIGHT = 0; // minimum allowed height of resulting sprite sheet (in pixels)
+
     private File selectedFile;
     private File outputFile;
     private String baseName;
@@ -282,7 +285,7 @@ public class SpriteSheetCreatorUtility extends Application {
         for(SpriteFrameMeta frame : frames) if(frame.width>largestWidth) largestWidth = frame.width;
 
         // set initial values:
-        int maxHeight = frames.get(0).height;
+        int maxHeight = Math.max(frames.get(0).height, MIN_HEIGHT);
         int optimalHeight = maxHeight;
         int optimalArea = Integer.MAX_VALUE;
 
@@ -307,7 +310,7 @@ public class SpriteSheetCreatorUtility extends Application {
             final double progressEstimate = 1.0 - (usedWidth-largestWidth)/(referenceWidth);
             Platform.runLater(()->progressWindow.progressBar.setProgress(progressEstimate));
             maxHeight += INCREMENT;
-        } while(usedWidth>largestWidth /*&& maxHeight<3300*/);
+        } while(usedWidth>largestWidth && maxHeight<MAX_HEIGHT);
 
         // Pack the frames one more time, using the known optimalHeight:
         usedWidth = packIntoHeight(optimalHeight, frames);
